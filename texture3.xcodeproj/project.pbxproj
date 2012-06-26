@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXApplicationTarget section */
+		7D1DB62F0783B66700943CE0 /* texture3 */ = {
+			isa = PBXApplicationTarget;
+			buildConfigurationList = 7DC802F113A59A5100A47B9B /* Build configuration list for PBXApplicationTarget "texture3" */;
+			buildPhases = (
+				7D1DB62A0783B66700943CE0 /* Headers */,
+				7D1DB62B0783B66700943CE0 /* Resources */,
+				7D1DB62C0783B66700943CE0 /* Sources */,
+				7D1DB62D0783B66700943CE0 /* Frameworks */,
+				7D1DB62E0783B66700943CE0 /* Rez */,
+			);
+			dependencies = (
+			);
+			name = texture3;
+			productInstallPath = "$(USER_APPS_DIR)";
+			productName = texture3;
+			productReference = 7D1DB6300783B66700943CE0 /* texture3.app */;
+			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string></string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
+	<key>CFBundleIconFile</key>
+	<string></string>
+	<key>CFBundleIdentifier</key>
+	<string></string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string></string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string></string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>0.0.1d1</string>
+</dict>
+</plist>
+";
+		};
+/* End PBXApplicationTarget section */
+
+/* Begin PBXBuildFile section */
+		7D1DB6360783B67D00943CE0 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1DB6350783B67D00943CE0 /* GLUT.framework */; };
+		7D1DB6380783B69F00943CE0 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1DB6370783B69F00943CE0 /* OpenGL.framework */; };
+		7D1DB63A0783B6B400943CE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1DB6390783B6B400943CE0 /* Foundation.framework */; };
+		7D1DB6410783B6DF00943CE0 /* box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D1DB63F0783B6DF00943CE0 /* box.cpp */; };
+		7D1DB6420783B6DF00943CE0 /* box.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D1DB6400783B6DF00943CE0 /* box.h */; };
+		7D1DB6480783B6EF00943CE0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D1DB6430783B6EF00943CE0 /* main.cpp */; };
+		7D1DB64A0783B6EF00943CE0 /* tire.raw in Resources */ = {isa = PBXBuildFile; fileRef = 7D1DB6450783B6EF00943CE0 /* tire.raw */; };
+		7D1DB64B0783B6EF00943CE0 /* trackball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D1DB6460783B6EF00943CE0 /* trackball.cpp */; };
+		7D1DB64C0783B6EF00943CE0 /* trackball.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D1DB6470783B6EF00943CE0 /* trackball.h */; };
+		7DC802F613A59A5800A47B9B /* box.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D1DB6400783B6DF00943CE0 /* box.h */; };
+		7DC802F713A59A5800A47B9B /* trackball.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D1DB6470783B6EF00943CE0 /* trackball.h */; };
+		7DC802F913A59A5800A47B9B /* tire.raw in Resources */ = {isa = PBXBuildFile; fileRef = 7D1DB6450783B6EF00943CE0 /* tire.raw */; };
+		7DC802FB13A59A5800A47B9B /* box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D1DB63F0783B6DF00943CE0 /* box.cpp */; };
+		7DC802FC13A59A5800A47B9B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D1DB6430783B6EF00943CE0 /* main.cpp */; };
+		7DC802FD13A59A5800A47B9B /* trackball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7D1DB6460783B6EF00943CE0 /* trackball.cpp */; };
+		7DC802FF13A59A5800A47B9B /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1DB6350783B67D00943CE0 /* GLUT.framework */; };
+		7DC8030013A59A5800A47B9B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1DB6370783B69F00943CE0 /* OpenGL.framework */; };
+		7DC8030113A59A5800A47B9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1DB6390783B6B400943CE0 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7D1DB6300783B66700943CE0 /* texture3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = texture3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D1DB6350783B67D00943CE0 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = /System/Library/Frameworks/GLUT.framework; sourceTree = "<absolute>"; };
+		7D1DB6370783B69F00943CE0 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		7D1DB6390783B6B400943CE0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		7D1DB63F0783B6DF00943CE0 /* box.cpp */ = {isa = PBXFileReference; fileEncoding = 18446744071562067969; lastKnownFileType = sourcecode.cpp.cpp; path = box.cpp; sourceTree = "<group>"; };
+		7D1DB6400783B6DF00943CE0 /* box.h */ = {isa = PBXFileReference; fileEncoding = 18446744071562067969; lastKnownFileType = sourcecode.c.h; path = box.h; sourceTree = "<group>"; };
+		7D1DB6430783B6EF00943CE0 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 18446744071562067969; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		7D1DB6450783B6EF00943CE0 /* tire.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = tire.raw; sourceTree = "<group>"; };
+		7D1DB6460783B6EF00943CE0 /* trackball.cpp */ = {isa = PBXFileReference; fileEncoding = 18446744071562067969; lastKnownFileType = sourcecode.cpp.cpp; path = trackball.cpp; sourceTree = "<group>"; };
+		7D1DB6470783B6EF00943CE0 /* trackball.h */ = {isa = PBXFileReference; fileEncoding = 18446744071562067969; lastKnownFileType = sourcecode.c.h; path = trackball.h; sourceTree = "<group>"; };
+		7DC8030713A59A5800A47B9B /* Info-texture3_____________.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-texture3_____________.plist"; sourceTree = "<group>"; };
+		7DC8030813A59A5800A47B9B /* texture3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = texture3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7D1DB62D0783B66700943CE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D1DB6360783B67D00943CE0 /* GLUT.framework in Frameworks */,
+				7D1DB6380783B69F00943CE0 /* OpenGL.framework in Frameworks */,
+				7D1DB63A0783B6B400943CE0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DC802FE13A59A5800A47B9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DC802FF13A59A5800A47B9B /* GLUT.framework in Frameworks */,
+				7DC8030013A59A5800A47B9B /* OpenGL.framework in Frameworks */,
+				7DC8030113A59A5800A47B9B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7D1DB6200783B65300943CE0 = {
+			isa = PBXGroup;
+			children = (
+				7D1DB6430783B6EF00943CE0 /* main.cpp */,
+				7D1DB6450783B6EF00943CE0 /* tire.raw */,
+				7D1DB6460783B6EF00943CE0 /* trackball.cpp */,
+				7D1DB6470783B6EF00943CE0 /* trackball.h */,
+				7D1DB63F0783B6DF00943CE0 /* box.cpp */,
+				7D1DB6400783B6DF00943CE0 /* box.h */,
+				7D1DB6390783B6B400943CE0 /* Foundation.framework */,
+				7D1DB6370783B69F00943CE0 /* OpenGL.framework */,
+				7D1DB6350783B67D00943CE0 /* GLUT.framework */,
+				7D1DB6310783B66700943CE0 /* Products */,
+				7DC8030713A59A5800A47B9B /* Info-texture3_____________.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		7D1DB6310783B66700943CE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7D1DB6300783B66700943CE0 /* texture3.app */,
+				7DC8030813A59A5800A47B9B /* texture3.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7D1DB62A0783B66700943CE0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D1DB6420783B6DF00943CE0 /* box.h in Headers */,
+				7D1DB64C0783B6EF00943CE0 /* trackball.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DC802F513A59A5800A47B9B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DC802F613A59A5800A47B9B /* box.h in Headers */,
+				7DC802F713A59A5800A47B9B /* trackball.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7DC802F413A59A5800A47B9B /* texture3（アップグレードしました） */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7DC8030313A59A5800A47B9B /* Build configuration list for PBXNativeTarget "texture3（アップグレードしました）" */;
+			buildPhases = (
+				7DC802F513A59A5800A47B9B /* Headers */,
+				7DC802F813A59A5800A47B9B /* Resources */,
+				7DC802FA13A59A5800A47B9B /* Sources */,
+				7DC802FE13A59A5800A47B9B /* Frameworks */,
+				7DC8030213A59A5800A47B9B /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "texture3（アップグレードしました）";
+			productInstallPath = "$(USER_APPS_DIR)";
+			productName = texture3;
+			productReference = 7DC8030813A59A5800A47B9B /* texture3.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7D1DB6240783B65300943CE0 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 7DC802F013A59A5100A47B9B /* Build configuration list for PBXProject "texture3" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 7D1DB6200783B65300943CE0;
+			productRefGroup = 7D1DB6310783B66700943CE0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7DC802F413A59A5800A47B9B /* texture3（アップグレードしました） */,
+				7D1DB62F0783B66700943CE0 /* texture3 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7D1DB62B0783B66700943CE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D1DB64A0783B6EF00943CE0 /* tire.raw in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DC802F813A59A5800A47B9B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DC802F913A59A5800A47B9B /* tire.raw in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		7D1DB62E0783B66700943CE0 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DC8030213A59A5800A47B9B /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7D1DB62C0783B66700943CE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D1DB6410783B6DF00943CE0 /* box.cpp in Sources */,
+				7D1DB6480783B6EF00943CE0 /* main.cpp in Sources */,
+				7D1DB64B0783B6EF00943CE0 /* trackball.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DC802FA13A59A5800A47B9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DC802FB13A59A5800A47B9B /* box.cpp in Sources */,
+				7DC802FC13A59A5800A47B9B /* main.cpp in Sources */,
+				7DC802FD13A59A5800A47B9B /* trackball.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7DC802EA13A59A5100A47B9B /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Development;
+		};
+		7DC802EB13A59A5100A47B9B /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Deployment;
+		};
+		7DC802EC13A59A5100A47B9B /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Default;
+		};
+		7DC802ED13A59A5100A47B9B /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = texture3;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Development;
+		};
+		7DC802EE13A59A5100A47B9B /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = texture3;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Deployment;
+		};
+		7DC802EF13A59A5100A47B9B /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = texture3;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Default;
+		};
+		7DC8030413A59A5800A47B9B /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "Info-texture3_____________.plist";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = texture3;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Development;
+		};
+		7DC8030513A59A5800A47B9B /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "Info-texture3_____________.plist";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = texture3;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Deployment;
+		};
+		7DC8030613A59A5800A47B9B /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "Info-texture3_____________.plist";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = texture3;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7DC802F013A59A5100A47B9B /* Build configuration list for PBXProject "texture3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DC802EA13A59A5100A47B9B /* Development */,
+				7DC802EB13A59A5100A47B9B /* Deployment */,
+				7DC802EC13A59A5100A47B9B /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		7DC802F113A59A5100A47B9B /* Build configuration list for PBXApplicationTarget "texture3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DC802ED13A59A5100A47B9B /* Development */,
+				7DC802EE13A59A5100A47B9B /* Deployment */,
+				7DC802EF13A59A5100A47B9B /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		7DC8030313A59A5800A47B9B /* Build configuration list for PBXNativeTarget "texture3（アップグレードしました）" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DC8030413A59A5800A47B9B /* Development */,
+				7DC8030513A59A5800A47B9B /* Deployment */,
+				7DC8030613A59A5800A47B9B /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7D1DB6240783B65300943CE0 /* Project object */;
+}

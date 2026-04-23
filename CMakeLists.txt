@@ -36,7 +36,7 @@ if(APPLE)
 
 elseif(WIN32)
     # Windows の設定
-    add_executable(${PROJECT_NAME} WIN32 ${SOURCES})
+    add_executable(${PROJECT_NAME} ${SOURCES})
 
     # スタートアッププロジェクトを texture3 にする
     set_property(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
@@ -55,6 +55,7 @@ elseif(WIN32)
     include(FetchContent)
     set(FREEGLUT_BUILD_DEMOS OFF CACHE BOOL "" FORCE)
     set(FREEGLUT_BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+    set(CMAKE_POLICY_VERSION_MINIMUM 3.10)
     FetchContent_Declare(
         freeglut
         GIT_REPOSITORY https://github.com/FreeGLUTProject/freeglut.git
@@ -62,9 +63,9 @@ elseif(WIN32)
     )
     FetchContent_MakeAvailable(freeglut)
 
-    # main.cpp が "glut.h" に直接インクルードできるようにパスを通す
+    # main.cpp が <GL/glut.h> としてインクルードできるようにパスを通す
     FetchContent_GetProperties(freeglut SOURCE_DIR freeglut_SOURCE_DIR)
-    target_include_directories(${PROJECT_NAME} PRIVATE "${freeglut_SOURCE_DIR}/include/GL")
+    target_include_directories(${PROJECT_NAME} PRIVATE "${freeglut_SOURCE_DIR}/include")
 
     # glext.h と khrplatform.h のダウンロード
     set(GL_HEADERS_DIR "${CMAKE_CURRENT_BINARY_DIR}/gl_headers")

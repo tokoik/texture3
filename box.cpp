@@ -1,11 +1,14 @@
-﻿#if defined(WIN32)
-//#  pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
-#  include "glut.h"
-#elif defined(__APPLE__) || defined(MACOSX)
+﻿#if defined(__APPLE__) || defined(MACOSX)
 #  include <GLUT/glut.h>
 #else
+#  if defined(_WIN32)
+//#    pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
+#  endif
 #  include <GL/glut.h>
 #endif
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 #include "box.h"
 

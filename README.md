@@ -12,8 +12,9 @@
 
 プログラムを実行すると、表面にタイヤのパターン画像（tire.raw）が貼り付けられた箱が表示され、そのテクスチャが自動でアニメーション（回転と奥行きの変化）します。テクスチャの投影や切り出しを数式で表現する仕組みを視覚的に確認できます。
 
-<img src="texture3.gif" style="display: block; margin: 0 auto;"
-width="256" height="256" alt="テクスチャ座標の自動生成" />
+<div style="text-align: center;">
+<img src="texture3.gif" width="256" height="256" alt="テクスチャ座標の自動生成" />
+</div>
 
 ## 2. ビルド方法
 

@@ -1,4 +1,5 @@
 ﻿#if defined(__APPLE__) || defined(MACOSX)
+#  define GL_SILENCE_DEPRECATION
 #  include <GLUT/glut.h>
 #else
 #  if defined(_WIN32)
@@ -147,7 +148,6 @@ static void scene(void)
   glDisable(GL_ALPHA_TEST);
 }
 
-
 /****************************
 ** GLUT のコールバック関数 **
 ****************************/
@@ -164,6 +164,7 @@ static void display(void)
   static int frame = 0;                      /* フレーム数　　　　　　　 */
   double t = (double)frame / (double)FRAMES; /* 時間とともに 0→1 に変化 */
 
+  /* アニメーションのサイクルごとにフレーム数をリセットする */
   if (++frame >= FRAMES) frame = 0;
 
   /* テクスチャ行列の設定 */

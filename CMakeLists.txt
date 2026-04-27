@@ -1,106 +1,150 @@
-cmake_minimum_required(VERSION 3.16)
-project(texture3)
+cmake_minimum_required(VERSION 3.14)
+project(texture3 LANGUAGES CXX)
 
-# ソースコード一覧
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# ソースファイルとヘッダファイル
 set(SOURCES
     main.cpp
     box.cpp
     trackball.cpp
+)
+
+set(HEADERS
     box.h
     trackball.h
 )
 
-# リソースファイル
-set(RESOURCES tire.raw)
+# テクスチャファイルなど
+set(TEXTURE_FILES
+    "tire.raw"
+)
 
 if(APPLE)
     # macOS の設定
+    set(ICON_FILE "opengl.icns")
 
-    # アプリケーションバンドルとして設定
-    add_executable(${PROJECT_NAME} MACOSX_BUNDLE ${SOURCES} ${RESOURCES})
+    # アプリケーションバンドルとして実行ファイルを作成
+    add_executable(${PROJECT_NAME} MACOSX_BUNDLE ${SOURCES} ${HEADERS} ${TEXTURE_FILES} ${ICON_FILE})
 
-    # tire.raw をアプリケーションバンドル (Resourcesディレクトリ) に組み込む
-    set_source_files_properties(${RESOURCES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
-
-    # Info.plist を設定してバンドル内に配置する
-    # CMakeに標準の Info.plist テンプレートを使わせるか、独自に指定します。
-    # すでにディレクトリにある Info.plist を使う場合、エラー防止のため cmake の変数書式にした .in を用意します
-    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Info.plist.in")
-        set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info.plist.in")
-    endif()
-
-    # GLUT と OpenGL のフレームワークを使用
-    find_library(GLUT_LIBRARY GLUT REQUIRED)
-    find_library(OPENGL_LIBRARY OpenGL REQUIRED)
+    # GLUT と OpenGL の Framework を検索・リンク
+    find_library(GLUT_LIBRARY GLUT)
+    find_library(OPENGL_LIBRARY OpenGL)
     target_link_libraries(${PROJECT_NAME} PRIVATE ${GLUT_LIBRARY} ${OPENGL_LIBRARY})
 
-elseif(WIN32)
-    # Windows の設定
-    add_executable(${PROJECT_NAME} ${SOURCES})
+    # アプリケーションバンドルの作成設定
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        # アプリケーションバンドルとしてビルド
+        MACOSX_BUNDLE TRUE
 
-    # スタートアッププロジェクトを texture3 にする
-    set_property(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+        # Info.plist に書き込む内容
+        MACOSX_BUNDLE_GUI_IDENTIFIER "com.yourcompany.${PROJECT_NAME}"
+        MACOSX_BUNDLE_BUNDLE_NAME "${PROJECT_NAME}"
+        MACOSX_BUNDLE_BUNDLE_VERSION "1.0"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0"
+        MACOSX_BUNDLE_ICON_FILE "${ICON_FILE}"
+        MACOSX_BUNDLE_COPYRIGHT "Copyright © 2026 Kohe Tokoi. All rights reserved."
 
-    # デバッグ実行時に tire.raw を読み込めるように作業ディレクトリを設定
-    set_property(TARGET ${PROJECT_NAME} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
-    
-    # 実行ファイルの出力先に tire.raw をコピー (直接起動する用)
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${CMAKE_CURRENT_SOURCE_DIR}/${RESOURCES}"
-            $<TARGET_FILE_DIR:${PROJECT_NAME}>
+        # Xcode のスキーム生成
+        XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "com.yourcompany.${PROJECT_NAME}"
+        XCODE_GENERATE_SCHEME ON
     )
 
-    # FetchContent を使って freeglut ソースをダウンロードしてビルド
+    # リソースの配置設定
+    set_source_files_properties(${TEXTURE_FILES} ${ICON_FILE} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+
+    # テクスチャファイルなどをアプリケーションバンドル内の Resources に組み込む
+    set_source_files_properties(${TEXTURE_FILES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+    set_source_files_properties(${ICON_FILE} PROPERTIES MACOSX_PACKAGE_LOCATION Resources)
+
+    # Xcode 上で Run したときに起動するようにアプリケーションバンドルをスタートアッププロジェクトにする
+    set_property(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" PROPERTY XCODE_GENERATE_SCHEME ON)
+
+elseif(WIN32)
+    # Windows (Visual Studio) の設定
+    add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+
     include(FetchContent)
-    set(FREEGLUT_BUILD_DEMOS OFF CACHE BOOL "" FORCE)
-    set(FREEGLUT_BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
-    set(CMAKE_POLICY_VERSION_MINIMUM 3.10)
+
+    # glext.h と khrplatform.h のダウンロード設定
+    set(GLEXT_H "${CMAKE_BINARY_DIR}/include/GL/glext.h")
+    set(KHRPLATFORM_H "${CMAKE_BINARY_DIR}/include/KHR/khrplatform.h")
+
+    if(NOT EXISTS "${GLEXT_H}")
+        file(DOWNLOAD "https://www.khronos.org/registry/OpenGL/api/GL/glext.h" "${GLEXT_H}")
+    endif()
+    if(NOT EXISTS "${KHRPLATFORM_H}")
+        file(DOWNLOAD "https://www.khronos.org/registry/EGL/api/KHR/khrplatform.h" "${KHRPLATFORM_H}")
+    endif()
+
+    target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}/include")
+
+    # freeglut のソースを取得してビルド
     FetchContent_Declare(
         freeglut
         GIT_REPOSITORY https://github.com/FreeGLUTProject/freeglut.git
-        GIT_TAG        v3.4.0
+        GIT_TAG master
     )
+    # freeglut の不要な共有ライブラリやデモのビルドを無効化
+    set(FREEGLUT_BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+    set(FREEGLUT_BUILD_DEMOS OFF CACHE BOOL "" FORCE)
     FetchContent_MakeAvailable(freeglut)
 
-    # main.cpp が <GL/glut.h> としてインクルードできるようにパスを通す
-    FetchContent_GetProperties(freeglut SOURCE_DIR freeglut_SOURCE_DIR)
+    # OpenGLのリンク
+    find_package(OpenGL REQUIRED)
+
     target_include_directories(${PROJECT_NAME} PRIVATE "${freeglut_SOURCE_DIR}/include")
-
-    # glext.h と khrplatform.h のダウンロード
-    set(GL_HEADERS_DIR "${CMAKE_CURRENT_BINARY_DIR}/gl_headers")
-    if(NOT EXISTS "${GL_HEADERS_DIR}/GL/glext.h")
-        file(DOWNLOAD "https://www.khronos.org/registry/OpenGL/api/GL/glext.h"
-             "${GL_HEADERS_DIR}/GL/glext.h" SHOW_PROGRESS)
-    endif()
-    if(NOT EXISTS "${GL_HEADERS_DIR}/KHR/khrplatform.h")
-        file(DOWNLOAD "https://www.khronos.org/registry/EGL/api/KHR/khrplatform.h"
-             "${GL_HEADERS_DIR}/KHR/khrplatform.h" SHOW_PROGRESS)
-    endif()
-    target_include_directories(${PROJECT_NAME} PRIVATE "${GL_HEADERS_DIR}")
-
-    # OpenGL と FreeGLUT をリンク
-    target_link_libraries(${PROJECT_NAME} PRIVATE freeglut_static opengl32)
+    # STATICリンクを利用
+    target_link_libraries(${PROJECT_NAME} PRIVATE freeglut_static OpenGL::GL)
     target_compile_definitions(${PROJECT_NAME} PRIVATE FREEGLUT_STATIC)
 
-elseif(UNIX)
-    # Ubuntu Linux の設定
-    add_executable(${PROJECT_NAME} ${SOURCES})
+    # 起動時に読み込めるようにビルド後にテクスチャファイルを実行ファイルと同じ階層にコピーする
+    foreach(TEX_FILE IN LISTS TEXTURE_FILES)
+        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${CMAKE_CURRENT_SOURCE_DIR}/${TEX_FILE}"
+            "$<TARGET_FILE_DIR:${PROJECT_NAME}>")
+    endforeach()
 
-    # pkg-config を使用してフラグやライブラリを設定
+    # Visual Studio のスタートアッププロジェクトとして設定
+    set_property(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}" PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+
+    # Visual Studio で実行する際の作業ディレクトリを実行ファイルと同階層にする
+    set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "$<TARGET_FILE_DIR:${PROJECT_NAME}>")
+
+else()
+    # Ubuntu Linux (その他UNIX系) の設定
+    add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+
+    # pkg-config を利用
     find_package(PkgConfig REQUIRED)
-    pkg_check_modules(GLUT REQUIRED glut)
-    pkg_check_modules(GL REQUIRED gl)
 
-    target_include_directories(${PROJECT_NAME} PRIVATE ${GLUT_INCLUDE_DIRS} ${GL_INCLUDE_DIRS})
-    target_link_directories(${PROJECT_NAME} PRIVATE ${GLUT_LIBRARY_DIRS} ${GL_LIBRARY_DIRS})
-    target_link_libraries(${PROJECT_NAME} PRIVATE ${GLUT_LIBRARIES} ${GL_LIBRARIES})
-    target_compile_options(${PROJECT_NAME} PRIVATE ${GLUT_CFLAGS_OTHER} ${GL_CFLAGS_OTHER})
+    # freeglut (glut) と gl の設定を取得
+    pkg_search_module(GLUT REQUIRED glut freeglut)
+    pkg_search_module(GL REQUIRED gl)
 
-    # プログラム起動時に tire.raw を読み込めるよう、ビルド後にコピー
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${CMAKE_CURRENT_SOURCE_DIR}/${RESOURCES}"
-            $<TARGET_FILE_DIR:${PROJECT_NAME}>
-    )
+    if(GLUT_FOUND)
+        target_compile_options(${PROJECT_NAME} PRIVATE ${GLUT_CFLAGS})
+        target_link_options(${PROJECT_NAME} PRIVATE ${GLUT_LDFLAGS})
+        target_link_libraries(${PROJECT_NAME} PRIVATE ${GLUT_LIBRARIES})
+    endif()
+
+    if(GL_FOUND)
+        target_compile_options(${PROJECT_NAME} PRIVATE ${GL_CFLAGS})
+        target_link_options(${PROJECT_NAME} PRIVATE ${GL_LDFLAGS})
+        target_link_libraries(${PROJECT_NAME} PRIVATE ${GL_LIBRARIES})
+    endif()
+
+    # 標準数学ライブラリ
+    target_link_libraries(${PROJECT_NAME} PRIVATE m)
+
+    # 起動時に読み込めるようにビルド後にテクスチャファイルを実行ファイルと同じ階層にコピーする
+    foreach(TEX_FILE IN LISTS TEXTURE_FILES)
+        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${CMAKE_CURRENT_SOURCE_DIR}/${TEX_FILE}"
+            "$<TARGET_FILE_DIR:${PROJECT_NAME}>")
+    endforeach()
+
 endif()

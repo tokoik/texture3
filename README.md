@@ -12,7 +12,7 @@
 
 プログラムを実行すると、表面にタイヤのパターン画像（tire.raw）が遠近感を持って投影された箱が表示され、テクスチャ自体が自動で回転するアニメーションが描画されます。また、マウス操作で箱全体を回転させることで、投影されたテクスチャがオブジェクトの動きに追従する様子を確認できます。
 
-![テクスチャ座標の自動生成](https://tokoik.github.io/blog/assets/images/texture3.webp)
+![テクスチャ座標の自動生成](https://tokoik.github.io/blog/assets/images/texture/texture3.webp)
 
 ## 2. ビルド方法
 
